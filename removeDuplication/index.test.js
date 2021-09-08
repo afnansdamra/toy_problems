@@ -10,7 +10,7 @@
  */
 
   function removeDuplication(str){
-    // return to do ...
+    return Array.from(new Set(str)).join('');
   }
 
   describe("Tests", () => {
