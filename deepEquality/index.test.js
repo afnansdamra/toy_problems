@@ -13,7 +13,7 @@
  */
 
  function isDeepEquals(obj1, obj2) {
-	// TO DO
+	return (!obj1 || !obj2) ? false : JSON.stringify(obj1) === JSON.stringify(obj2)
 }
 
 
