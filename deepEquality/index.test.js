@@ -13,7 +13,15 @@
  */
 
  function isDeepEquals(obj1, obj2) {
-	return (!obj1 || !obj2) ? false : JSON.stringify(obj1) === JSON.stringify(obj2)
+	if(!obj1 || !obj2) return false
+
+	const newObj1 = {};
+	const newObj2 = {};
+
+	Object.keys(obj1).sort().forEach((key) => newObj1[key] = obj1[key]);
+	Object.keys(obj2).sort().forEach((key) => newObj2[key] = obj2[key]);
+
+	return JSON.stringify(newObj1) === JSON.stringify(newObj2)
 }
 
 
@@ -23,6 +31,12 @@ describe("Tests", () => {
 		b: {
 			c: 3
 		}
+	}
+	const mockObj2 = {
+		b: {
+			c: 3
+		},
+		a: 1,
 	}
 
 	it("test isDeepEquals #case1", () => {
@@ -36,7 +50,7 @@ describe("Tests", () => {
 	})
 
 	it("test isDeepEquals #case3", () => {
-		const result = isDeepEquals(mockObj, mockObj)
+		const result = isDeepEquals(mockObj, mockObj2)
 		expect(result).toEqual(true)
 	})
 
