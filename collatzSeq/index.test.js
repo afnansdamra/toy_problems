@@ -16,13 +16,29 @@ NOTE: Once the chain starts the terms are allowed to go above one million.
  */
 
 /**
- * What is the time complexity for your solution ?
+ * What is the time complexity for your solution ? O(n)
  */
 
 /**
  * Write the unit tests that cover your solution
  */
 
-function collatzSeq (number) {
-// TO DO
+function collatzSeq (number = 1000000) {
+  const chain = []
+  while(number !== 1) {
+    chain.push(number)
+    if (number % 2 === 0) {
+      number /= 2
+    } else {
+      number = (number * 3) + 1
+    }
+  }
+  chain.push(1)
+  return chain.length
 }
+
+describe("collatzSeq", () => {
+	it("test", () => {
+		expect(collatzSeq(13)).toEqual(10)
+	})
+})
