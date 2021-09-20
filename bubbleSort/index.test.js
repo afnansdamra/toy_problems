@@ -30,9 +30,24 @@ const a = [34, 203, 3, 746, 200, 984, 198, 764, 9];
 
 // Feel free to add helper functions if needed
 
-const bubbleSort = (array) => {};
+const bubbleSort = (array) => {
+  for (let i = 0; i < array.length; i++) {
+    for (let j = 0; j < array.length - i - 1; j++) {
+      if (array[j] > array[j + 1]) {
+        [array[j], array[j + 1]] = [array[j + 1], array[j]];
+      }
+    }
+  }
+  return array
+};
 
 /**
  * Remember to look here http://visualgo.net/sorting
  *
 */
+
+describe("bubbleSort", () => {
+	it("test", () => {
+		expect(bubbleSort(a)).toEqual([3, 9, 34, 198, 200, 203, 746, 764, 984])
+	})
+})
