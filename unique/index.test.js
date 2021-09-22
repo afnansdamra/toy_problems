@@ -17,6 +17,13 @@
 const arrOfNum = [1, 2, 2, 4, 5, 6, 6];
 
 const getUniqueValues = (arrOfNum) => {
-  // TO DO
+  return Array.from(new Set(arrOfNum));
 }
 console.log(getUniqueValues(arrOfNum)); // [1, 2, 4, 5, 6]
+
+
+describe("Tests", () => {
+  it("test getUniqueValues", () => {
+    expect(getUniqueValues(arrOfNum)).toEqual([1, 2, 4, 5, 6])
+  });
+});
