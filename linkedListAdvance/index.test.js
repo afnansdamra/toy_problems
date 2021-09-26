@@ -19,54 +19,50 @@
 // list.tail.value;   //yields '5';
 
 
-class Node {
-  constructor(value) {
-    this.value = value;
-    this.next = null;
+const Node = function(value) {
+  this.value = value;
+  this.next = null;
+}
+
+const LinkedList = function() {
+  this.head = null;
+  this.tail = null;
+}
+
+LinkedList.prototype.addToTail = function(value) {
+  const newNode = new Node(value);
+  if (!this.head) {
+    this.head = newNode;
+    this.tail = newNode;
+  } else {
+    const lastNode = this.head;
+    while (lastNode.next)
+      lastNode = lastNode.next;
+    lastNode.next = newNode;
+    this.tail = newNode;
   }
 }
 
-class LinkedList {
-  constructor() {
-    this.head = null;
-    this.tail = null;
+LinkedList.prototype.removeHead = function() {
+  if (!this.head) {
+    return null
+  } else {
+    const headNode = this.head
+    this.head = headNode.next
+    return headNode.value
   }
+}
 
-  addToTail(value) {
-    const newNode = new Node(value);
-    if (!this.head) {
-      this.head = newNode;
-      this.tail = newNode;
-    } else {
-      const lastNode = this.head;
-      while (lastNode.next)
-        lastNode = lastNode.next;
-      lastNode.next = newNode;
-      this.tail = newNode;
-    }
-  }
-
-  removeHead() {
-    if (!this.head) {
-      return null
-    } else {
-      const headNode = this.head
-      this.head = headNode.next
-      return headNode.value
-    }
-  }
-
-  contains(value) {
-    if (this.head) {
-      let searchNode = this.head
+LinkedList.prototype.contains = function(value) {
+  if (this.head) {
+    let searchNode = this.head
+    if (searchNode.value === value) return true
+    while (searchNode.next) {
+      searchNode = searchNode.next
       if (searchNode.value === value) return true
-      while (searchNode.next) {
-        searchNode = searchNode.next
-        if (searchNode.value === value) return true
-      }
     }
-    return false;
   }
+  return false;
 }
 
 
