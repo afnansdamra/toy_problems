@@ -2,7 +2,7 @@
 Write a function pingPongTracker that accepts no arguments and returns an object with the
 following methods:
 - timeSpentPlaying() should return the total amount of time you have played pingpong.
-- playOneGame() should increase the total time you played pingpong by 15 minutes 
+- playOneGame() should increase the total time you played pingpong by 15 minutes
   and return a string "Game played"
 - myLevel() should return your experience level based on how much time you have spent playing
   pingpong. These are the levels: a) Less than 30 minutes - "I need to improve my game"
