@@ -1,4 +1,3 @@
-
 /**
  * Given a roman numeral as input, write a function that converts the roman
  * numeral to a number and outputs it.
@@ -23,9 +22,26 @@ const DIGIT_VALUES = {
   L: 50,
   C: 100,
   D: 500,
-  M: 1000
-};
+  M: 1000,
+}
 
- const translateRomanNumeral = (romanNumeral)=> {
-   // TO DO ...
+const translateRomanNumeral = (romanNumeral) => {
+  let num = DIGIT_VALUES[romanNumeral.charAt(0)]
+  let curr, prev
+  for (let i = 1; i < romanNumeral.length; i++) {
+    curr = DIGIT_VALUES[romanNumeral.charAt(i)]
+    prev = DIGIT_VALUES[romanNumeral.charAt(i - 1)]
+    num = (curr <= prev) ? num + curr : num - prev * 2 + curr
   }
+
+  return num
+}
+
+describe('translateRomanNumeral', () => {
+  it('test translateRomanNumeral', () => {
+    expect(translateRomanNumeral('IV')).toEqual(4)
+    expect(translateRomanNumeral('XXI')).toEqual(21)
+    expect(translateRomanNumeral('XXVI')).toEqual(26)
+    expect(translateRomanNumeral('CI')).toEqual(101)
+  })
+})
