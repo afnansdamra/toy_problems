@@ -38,7 +38,7 @@ const bubbleSort = (array) => {
       }
     }
   }
-  return array
+  return array;
 };
 
 /**
@@ -46,8 +46,8 @@ const bubbleSort = (array) => {
  *
 */
 
-describe("bubbleSort", () => {
-	it("test", () => {
-		expect(bubbleSort(a)).toEqual([3, 9, 34, 198, 200, 203, 746, 764, 984])
-	})
-})
+describe('bubbleSort', () => {
+  it('test', () => {
+    expect(bubbleSort(a)).toEqual([3, 9, 34, 198, 200, 203, 746, 764, 984]);
+  });
+});

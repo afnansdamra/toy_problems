@@ -24,7 +24,7 @@
  *	"())"
  */
 
- function balancedParens(input) {
+function balancedParens(input) {
   input = input.match(/[()[\]{}]/g);
   const brackets = {
     '(': ')',
@@ -51,7 +51,7 @@ describe('Test', () => {
     expect(balancedParens('(){}[[]]')).toBeTruthy();
     expect(balancedParens('{}{Afnan}[Damra](())')).toBeTruthy();
     expect(balancedParens(' var wow  = { yo: thisIsAwesome() }')).toBeTruthy();
-  })
+  });
 
   it('should return false when called if the brackets in the string are not balanced', () => {
     expect(balancedParens(')(')).toBeFalsy();
@@ -59,5 +59,5 @@ describe('Test', () => {
     expect(balancedParens('(](')).toBeFalsy();
     expect(balancedParens('{(})')).toBeFalsy();
     expect(balancedParens(' var hubble = function() { telescopes.awesome();')).toBeFalsy();
-  })
+  });
 });

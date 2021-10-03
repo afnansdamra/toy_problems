@@ -16,34 +16,34 @@ myGame.timeSpentPlaying(); //should return 30;
 myGame.myLevel(); //should return "You need to improve your game"
 */
 
-function pingPongTracker () {
+function pingPongTracker() {
   this.time = 0;
   return {
     playOneGame: () => {
-      this.time += 15
-      return "Game played"
+      this.time += 15;
+      return 'Game played';
     },
     timeSpentPlaying: () => this.time,
-    myLevel: () => this.time < 30 ? "I need to improve my game" : this.time >= 30 && this.time < 100 ? "You need to improve your game" : "Wow, I have wasted a lot of time"
-  }
+    myLevel: () => this.time < 30 ? 'I need to improve my game' : this.time >= 30 && this.time < 100 ? 'You need to improve your game' : 'Wow, I have wasted a lot of time',
+  };
 }
 
-describe("pingPongTracker", () => {
-	it("test pingPongTracker", () => {
+describe('pingPongTracker', () => {
+  it('test pingPongTracker', () => {
     const newGame = pingPongTracker();
 
-		expect(newGame.playOneGame()).toEqual("Game played")
-		expect(newGame.timeSpentPlaying()).toEqual(15)
-		expect(newGame.myLevel()).toEqual("I need to improve my game")
-		expect(newGame.playOneGame()).toEqual("Game played")
-		expect(newGame.timeSpentPlaying()).toEqual(30)
-		expect(newGame.myLevel()).toEqual("You need to improve your game")
-		expect(newGame.playOneGame()).toEqual("Game played")
-		expect(newGame.playOneGame()).toEqual("Game played")
-		expect(newGame.playOneGame()).toEqual("Game played")
-		expect(newGame.playOneGame()).toEqual("Game played")
-		expect(newGame.playOneGame()).toEqual("Game played")
-		expect(newGame.timeSpentPlaying()).toEqual(105)
-		expect(newGame.myLevel()).toEqual("Wow, I have wasted a lot of time")
-	})
-})
+    expect(newGame.playOneGame()).toEqual('Game played');
+    expect(newGame.timeSpentPlaying()).toEqual(15);
+    expect(newGame.myLevel()).toEqual('I need to improve my game');
+    expect(newGame.playOneGame()).toEqual('Game played');
+    expect(newGame.timeSpentPlaying()).toEqual(30);
+    expect(newGame.myLevel()).toEqual('You need to improve your game');
+    expect(newGame.playOneGame()).toEqual('Game played');
+    expect(newGame.playOneGame()).toEqual('Game played');
+    expect(newGame.playOneGame()).toEqual('Game played');
+    expect(newGame.playOneGame()).toEqual('Game played');
+    expect(newGame.playOneGame()).toEqual('Game played');
+    expect(newGame.timeSpentPlaying()).toEqual(105);
+    expect(newGame.myLevel()).toEqual('Wow, I have wasted a lot of time');
+  });
+});

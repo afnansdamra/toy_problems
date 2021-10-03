@@ -22,12 +22,12 @@
 const Node = function(value) {
   this.value = value;
   this.next = null;
-}
+};
 
 const LinkedList = function() {
   this.head = null;
   this.tail = null;
-}
+};
 
 LinkedList.prototype.addToTail = function(value) {
   const newNode = new Node(value);
@@ -36,49 +36,49 @@ LinkedList.prototype.addToTail = function(value) {
     this.tail = newNode;
   } else {
     const lastNode = this.head;
-    while (lastNode.next)
+    while (lastNode.next) {
       lastNode = lastNode.next;
+    }
     lastNode.next = newNode;
     this.tail = newNode;
   }
-}
+};
 
 LinkedList.prototype.removeHead = function() {
   if (!this.head) {
-    return null
+    return null;
   } else {
-    const headNode = this.head
-    this.head = headNode.next
-    return headNode.value
+    const headNode = this.head;
+    this.head = headNode.next;
+    return headNode.value;
   }
-}
+};
 
 LinkedList.prototype.contains = function(value) {
   if (this.head) {
-    let searchNode = this.head
-    if (searchNode.value === value) return true
+    let searchNode = this.head;
+    if (searchNode.value === value) return true;
     while (searchNode.next) {
-      searchNode = searchNode.next
-      if (searchNode.value === value) return true
+      searchNode = searchNode.next;
+      if (searchNode.value === value) return true;
     }
   }
   return false;
-}
+};
 
 
-
-describe("Tests", () => {
-	it("test LinkedList", () => {
+describe('Tests', () => {
+  it('test LinkedList', () => {
     const list = new LinkedList();
-    expect(list.tail).toBeNull()
-    list.addToTail(4)
-    list.addToTail(5)
-    expect(list.tail.value).toEqual(5)
-    expect(list.head.value).toEqual(4)
-    expect(list.contains(5)).toBeTruthy()
-    expect(list.contains(6)).toBeFalsy()
-    expect(list.removeHead()).toEqual(4)
-    expect(list.head.value).toEqual(5)
-    expect(list.tail.value).toEqual(5)
-	})
-})
+    expect(list.tail).toBeNull();
+    list.addToTail(4);
+    list.addToTail(5);
+    expect(list.tail.value).toEqual(5);
+    expect(list.head.value).toEqual(4);
+    expect(list.contains(5)).toBeTruthy();
+    expect(list.contains(6)).toBeFalsy();
+    expect(list.removeHead()).toEqual(4);
+    expect(list.head.value).toEqual(5);
+    expect(list.tail.value).toEqual(5);
+  });
+});

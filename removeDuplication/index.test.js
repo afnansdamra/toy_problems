@@ -9,9 +9,9 @@
   "good morning"  gets converted to "god mrni"
  */
 
-  function removeDuplication(str){
-    return Array.from(new Set(str)).join('');
-  }
+function removeDuplication(str) {
+  return Array.from(new Set(str)).join('');
+}
 
 describe('Tests', () => {
   it('test removeDuplication', () => {

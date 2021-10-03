@@ -15,23 +15,23 @@
  * console.log(anagrams); // [ 'abc', 'acb', 'bac', 'bca', 'cab', 'cba' ]
  */
 
-const allAnagrams = function (string) {
+const allAnagrams = function(string) {
   if (string.length === 1) return string;
   const returnResult = [];
-  for (let i = 0; i < string.length; i++){
+  for (let i = 0; i < string.length; i++) {
     const firstLetter = string[0];
-    const result =  allAnagrams(string.slice(1, string.length));
-    for(let j=0; j < result.length; j++){
+    const result = allAnagrams(string.slice(1, string.length));
+    for (let j=0; j < result.length; j++) {
       returnResult.push(firstLetter + result[j]);
     }
     string = string.substr(1, string.length -1) + firstLetter;
   }
   return returnResult;
-}
+};
 
 describe('Test', () => {
   it('test', () => {
-    expect(allAnagrams('abc')).toEqual(['abc', 'acb', 'bca', 'bac', 'cab', 'cba'])
-    expect(allAnagrams('sm')).toEqual(['sm', 'ms'])
-  })
-})
+    expect(allAnagrams('abc')).toEqual(['abc', 'acb', 'bca', 'bac', 'cab', 'cba']);
+    expect(allAnagrams('sm')).toEqual(['sm', 'ms']);
+  });
+});
