@@ -15,6 +15,33 @@ flatten('a', ['b', 2], 3, null, [[4], ['c']])
 // returns ['a', 'b', 2, 3, null, 4, 'c']
 */
 
-const flatten = () => {
-
+const flatten = function(...args) {
+  const result = [];
+  for (let i = 0; i < args.length; i++) {
+    if (typeof args[i] === 'object' && args[i] !== null) {
+      if (JSON.stringify(args[i]) !== JSON.stringify(flatten(...args[i]))) {
+        result.push(...flatten(...args[i]));
+      } else {
+        result.push(...args[i]);
+      }
+    } else {
+      result.push(args[i]);
+    }
+  }
+  return result;
 };
+
+const arr = [-7, 50, 2, 37, 10, 28];
+describe('flatten', () => {
+  it('test', () => {
+    expect(flatten(arr, undefined, 5, null, ['12', [1, 2]])).toEqual([
+      ...arr,
+      undefined,
+      5,
+      null,
+      '12',
+      1,
+      2,
+    ]);
+  });
+});
