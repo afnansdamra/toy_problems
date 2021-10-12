@@ -24,6 +24,41 @@ rotate(data, 11)    // => [5, 1, 2, 3, 4]
 rotate(data, 12478) // => [3, 4, 5, 1, 2]
 */
 
+/**
+ * function to rotate a given array n times
+ * @param {array} array the array you need to rotate
+ * @param {number} steps rotation times
+ * @return {array} new array after the number of steps rotated
+ */
 const rotate = function(array, steps) {
-
+  if (typeof array !== 'object' || !array.length || typeof steps !== 'number') {
+    throw new Error('invalid input');
+  }
+  const result = [...array];
+  if (steps > 0) {
+    for (let i = 0; i < steps; i++) {
+      result.unshift(result.pop());
+    }
+  } else {
+    for (let i = 0; i > steps; i--) {
+      result.push(result.shift());
+    }
+  }
+  return result;
 };
+
+describe('rotate', () => {
+  const data = [1, 2, 3, 4, 5];
+  test('It should compose functions', () => {
+    expect(rotate(data, 1)).toEqual([5, 1, 2, 3, 4]);
+    expect(rotate(data, 2)).toEqual([4, 5, 1, 2, 3]);
+    expect(rotate(data, 5)).toEqual([1, 2, 3, 4, 5]);
+    expect(rotate(data, 0)).toEqual([1, 2, 3, 4, 5]);
+    expect(rotate(data, -1)).toEqual([2, 3, 4, 5, 1]);
+    expect(rotate(data, -2)).toEqual([3, 4, 5, 1, 2]);
+    expect(rotate(data, -5)).toEqual([1, 2, 3, 4, 5]);
+    expect(rotate(data, 7)).toEqual([4, 5, 1, 2, 3]);
+    expect(rotate(data, 11)).toEqual([5, 1, 2, 3, 4]);
+    expect(rotate(data, 12478)).toEqual([3, 4, 5, 1, 2]);
+  });
+});
