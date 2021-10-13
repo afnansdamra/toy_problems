@@ -1,5 +1,6 @@
 /**
- * Given a single input string, write a function that outputs an array of strings with every possible
+ * Given a single input string, write a function that outputs an array
+ * of strings with every possible
  * combination of letters.
  *
  * At first, don't worry about repeated (duplicate) strings.
@@ -21,17 +22,24 @@ const allAnagrams = function(string) {
   for (let i = 0; i < string.length; i++) {
     const firstLetter = string[0];
     const result = allAnagrams(string.slice(1, string.length));
-    for (let j=0; j < result.length; j++) {
+    for (let j = 0; j < result.length; j++) {
       returnResult.push(firstLetter + result[j]);
     }
-    string = string.substr(1, string.length -1) + firstLetter;
+    string = string.substr(1, string.length - 1) + firstLetter;
   }
   return returnResult;
 };
 
 describe('Test', () => {
   it('test', () => {
-    expect(allAnagrams('abc')).toEqual(['abc', 'acb', 'bca', 'bac', 'cab', 'cba']);
+    expect(allAnagrams('abc')).toEqual([
+      'abc',
+      'acb',
+      'bca',
+      'bac',
+      'cab',
+      'cba',
+    ]);
     expect(allAnagrams('sm')).toEqual(['sm', 'ms']);
   });
 });
